@@ -1,7 +1,7 @@
 <ion-content #updateContent class="ion-padding-top">
 
-  <ion-slides #slider [options]="slideOpts" pager="true">
-    <ion-slide *ngFor="let version of versions;let last = last;let i=index;" >
+  <swiper-container #slider [options]="slideOpts" pager="true">
+    <swiper-slide *ngFor="let version of versions;let last = last;let i=index;" >
       <div [style.display]="i+1===this.slide?'block':'none'" class="ion-padding-horizontal">
         <div>
           <ion-title>
@@ -25,6 +25,6 @@
           <ion-col size="3"></ion-col>
         </ion-row>
       </div>
-    </ion-slide>
-  </ion-slides>
+    </swiper-slide>
+  </swiper-container>
 </ion-content>

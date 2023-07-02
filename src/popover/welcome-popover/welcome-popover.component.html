@@ -30,8 +30,8 @@
 </ion-content>
 <!--We just add 50% height for first slide of analytics, else the image wouldn't be displayed -->
 <ion-footer  class="ion-no-border" [style.maxHeight]="slide==1 ? '50%' : 'inherit'" style="overflow:auto;">
-    <ion-slides #slider [options]="slideOpts" pager="true">
-      <ion-slide >
+    <swiper-container #slider [options]="slideOpts" pager="true">
+      <swiper-slide>
         <!--Hide the long text, because else the slide would have a scrollable context -->
         <div [hidden]="slide!=1"  class="ion-padding-top ion-margin-horizontal">
           <div class="welcome-content-text">
@@ -51,8 +51,8 @@
             </ion-col>
           </ion-row>
         </div>
-      </ion-slide>
-      <ion-slide>
+      </swiper-slide>
+      <swiper-slide>
         <div class="ion-padding-top ion-margin-horizontal">
           <div class="welcome-content-text">
             <ion-title>
@@ -75,8 +75,8 @@
             </ion-col>
           </ion-row>
         </div>
-      </ion-slide>
-      <ion-slide>
+      </swiper-slide>
+      <swiper-slide>
         <div class="ion-padding-top ion-margin-horizontal">
           <div class="welcome-content-text">
             <ion-title>
@@ -99,8 +99,8 @@
             </ion-col>
           </ion-row>
         </div>
-      </ion-slide>
-      <ion-slide>
+      </swiper-slide>
+      <swiper-slide>
         <div class="ion-padding-top ion-margin-horizontal">
           <div class="welcome-content-text">
             <ion-title>
@@ -123,8 +123,8 @@
             </ion-col>
           </ion-row>
         </div>
-      </ion-slide>
-      <ion-slide>
+      </swiper-slide>
+      <swiper-slide>
         <div class="ion-padding-top ion-margin-horizontal">
           <div class="welcome-content-text">
             <ion-title>
@@ -143,6 +143,6 @@
           </ion-row>
 
         </div>
-      </ion-slide>
-    </ion-slides>
+      </swiper-slide>
+    </swiper-container>
 </ion-footer>

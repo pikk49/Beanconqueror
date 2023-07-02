@@ -73,6 +73,10 @@ import { UIExportImportHelper } from '../services/uiExportImportHelper';
 
 declare var AppRate;
 declare var window;
+
+import { register } from 'swiper/element/bundle';
+
+register();
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',

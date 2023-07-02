@@ -599,7 +599,6 @@ export class UIUpdate {
       id: 'update-popover',
       showBackdrop: true,
       backdropDismiss: true,
-      swipeToClose: true,
       componentProps: { versions: showingVersions },
     });
     await modal.present();

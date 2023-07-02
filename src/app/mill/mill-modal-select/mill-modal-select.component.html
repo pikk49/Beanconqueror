@@ -54,9 +54,9 @@
           <ion-card *ngIf="getOpenMills().length > 0">
             <ion-item *ngFor="let mill of getOpenMills()" lines="none" tappable>
               <ion-radio slot="start" value="{{mill.config.uuid}}"></ion-radio>
-              <div>
+              <ion-label>
                 <h6>{{mill.name}}</h6>
-              </div>
+              </ion-label>
             </ion-item>
           </ion-card>
         </div>

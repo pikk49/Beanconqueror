@@ -54,6 +54,8 @@ ion-toolbar[with-add-button] {
   padding-top: 19px!important;
 }
 ion-header {
+  box-shadow:none!important;
+  -webkit-box-shadow:none!important;
   background-color: #F0F0F0;
   &.header-md:after {
     background: none;
@@ -414,8 +416,8 @@ ion-menu:host .menu-inner {
 
   ion-checkbox {
 
-    --background: #D1D1D1;
-    --background-checked: var(--ion-color-accent);
+    --checkbox-background: #D1D1D1;
+    --checkbox-background-checked: var(--ion-color-accent);
     --border-color: transparent;
     --border-color-checked: transparent;
   }

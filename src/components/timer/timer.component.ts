@@ -38,6 +38,8 @@ export class TimerComponent implements OnInit, OnDestroy {
 
   public timer: ITimer;
   public settings: Settings;
+
+  public timerId = 'timer';
   constructor(
     private readonly modalCtrl: ModalController,
     private readonly bleManager: CoffeeBluetoothDevicesService,
