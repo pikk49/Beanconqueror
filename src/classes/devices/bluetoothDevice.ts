@@ -4,6 +4,7 @@ declare var ble: any;
 
 import { EventEmitter } from '@angular/core';
 import { Logger } from './common/logger';
+import { ScaleType } from './index';
 
 export enum SCALE_TIMER_COMMAND {
   STOP = 'STOP',
@@ -42,14 +43,20 @@ export class BluetoothScale {
   public tareEvent: EventEmitter<TareEvent> = new EventEmitter();
   protected weight: Weight;
   protected blueToothParentlogger: Logger;
+  private scaleType = undefined;
 
-  constructor(data: PeripheralData) {
+  constructor(data: PeripheralData, type: ScaleType) {
     this.device_id = data.id;
     try {
       this.device_name = data.name;
     } catch (ex) {}
 
+    this.scaleType = type;
     this.blueToothParentlogger = new Logger();
+  }
+
+  public getScaleType() {
+    return this.scaleType;
   }
 
   public async connect() {}

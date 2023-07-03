@@ -59,7 +59,11 @@ import {
   CoffeeBluetoothServiceEvent,
 } from '../../../services/coffeeBluetoothDevices/coffee-bluetooth-devices.service';
 import { PressureDevice } from '../../../classes/devices/pressureBluetoothDevice';
-import { BluetoothScale, SCALE_TIMER_COMMAND } from '../../../classes/devices';
+import {
+  BluetoothScale,
+  SCALE_TIMER_COMMAND,
+  ScaleType,
+} from '../../../classes/devices';
 import { IBrewGraphs } from '../../../interfaces/brew/iBrewGraphs';
 import { BrewRatioCalculatorComponent } from '../../../app/brew/brew-ratio-calculator/brew-ratio-calculator.component';
 import { PreparationDevice } from '../../../classes/preparationDevice/preparationDevice';
@@ -71,6 +75,7 @@ import {
 import { TemperatureDevice } from 'src/classes/devices/temperatureBluetoothDevice';
 import { PreparationDeviceType } from '../../../classes/preparationDevice';
 import { UIToast } from '../../../services/uiToast';
+import { EurekaPrecisaScale } from '../../../classes/devices/eurekaPrecisaScale';
 
 declare var cordova;
 declare var Plotly;
@@ -3021,7 +3026,15 @@ export class BrewBrewingComponent implements OnInit, AfterViewInit {
     this.flowProfileArrCalculated.push(weight - oldWeight);
 
     /* Realtime flow start**/
+
+    /** timeDelta = Timestamp - oldTimestamp;
+
+     flow_value = (newSmoothedWeight - oldRealtimeSmoothedValue) * (1/timeDelta);
+
+     then the values come out almost exactly as expected.**/
+
     let oldRealtimeSmoothedValue = 0;
+
     const realtimeFlowLength = this.flow_profile_raw.realtimeFlow.length;
     if (realtimeFlowLength > 0) {
       oldRealtimeSmoothedValue =
@@ -3036,8 +3049,23 @@ export class BrewBrewingComponent implements OnInit, AfterViewInit {
     realtimeWaterFlow.brew_time = flowObj.flowTimeSecond;
     realtimeWaterFlow.timestamp = flowObj.flowTimestamp;
     realtimeWaterFlow.smoothed_weight = newSmoothedWeight;
-    realtimeWaterFlow.flow_value =
-      (newSmoothedWeight - oldRealtimeSmoothedValue) * 10;
+
+    const scaleType = this.bleManager.getScale().getScaleType();
+    if (
+      scaleType === ScaleType.EUREKAPRECISA ||
+      scaleType === ScaleType.SMARTCHEF
+    ) {
+      let timeStampDelta: any = 0;
+      if (realtimeFlowLength > 0) {
+        // timeStampDelta = this.flow_profile_raw.realtimeFlow[realtimeFlowLength - 1].timestamp - flowObj.flowTimestamp;
+      }
+
+      realtimeWaterFlow.flow_value =
+        (newSmoothedWeight - oldRealtimeSmoothedValue) * (1 / timeStampDelta);
+    } else {
+      realtimeWaterFlow.flow_value =
+        (newSmoothedWeight - oldRealtimeSmoothedValue) * 10;
+    }
 
     this.realtimeFlowTrace.x.push(flowObj.dateUnixTime);
     this.realtimeFlowTrace.y.push(realtimeWaterFlow.flow_value);

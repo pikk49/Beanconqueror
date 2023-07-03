@@ -2,7 +2,7 @@
   <ion-icon class="icon-16" name="beanconqueror-add"></ion-icon>&nbsp;{{"ADD_PHOTO" | translate}}
 </ion-item>
 <div *ngIf="data?.attachments && data.attachments.length > 0">
-  <swiper-container #photoSlides pager="true">
+  <swiper-container  [pagination]="{ clickable: true }"  #photoSlides pager="true">
     <swiper-slide *ngFor="let attachment of data.attachments;let i = index">
       <ion-button (click)="deleteImage(i)" class="position-absolute-button" tappable color="accent" fill="clear">
         <ion-icon slot="icon-only" name="trash"></ion-icon>

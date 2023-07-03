@@ -1,6 +1,7 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { IonContent, ModalController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
+import { SwiperOptions } from 'swiper';
 
 @Component({
   selector: 'app-update-popover',
@@ -9,9 +10,12 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class UpdatePopoverComponent implements OnInit {
   @Input() public versions: Array<string>;
-  public slideOpts = {
-    allowTouchMove: false,
-    speed: 400,
+  public config: SwiperOptions = {
+    slidesPerView: 3,
+    spaceBetween: 50,
+    navigation: true,
+    pagination: { clickable: true },
+    scrollbar: { draggable: true },
   };
   public slide: number = 1;
   @ViewChild('slider', { static: false }) public updateSlider:
@@ -26,25 +30,17 @@ export class UpdatePopoverComponent implements OnInit {
   ) {}
 
   public nextSlide() {
-    this.updateSlider?.nativeElement.swiper.allowSlidesNext();
+    this.slide = this.slide + 1;
     this.updateContentElement.scrollToTop(250);
-    this.slide++;
-    this.__triggerUpdate();
+    if (this.updateSlider?.nativeElement.swiper.allowSlideNext) {
+      this.updateSlider?.nativeElement.swiper.slideNext();
+    }
   }
   public finish() {
     this.dismiss();
   }
 
-  public ngOnInit() {
-    this.__triggerUpdate();
-  }
-
-  private __triggerUpdate() {
-    // Fix, specialy on new devices which will see 2 update screens, the slider was white
-    setTimeout(() => {
-      //this.updateSlider.update();
-    });
-  }
+  public ngOnInit() {}
 
   public dismiss() {
     this.modalController.dismiss(

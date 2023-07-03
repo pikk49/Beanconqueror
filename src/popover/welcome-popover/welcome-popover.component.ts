@@ -16,12 +16,6 @@ import { UIPreparationHelper } from '../../services/uiPreparationHelper';
   styleUrls: ['./welcome-popover.component.scss'],
 })
 export class WelcomePopoverComponent implements OnInit {
-  public slideOpts = {
-    allowTouchMove: false,
-    speed: 400,
-    slide: 4,
-  };
-
   public slide: number = 1;
   @ViewChild('slider', { static: false }) public welcomeSlider:
     | ElementRef
@@ -39,12 +33,7 @@ export class WelcomePopoverComponent implements OnInit {
     private readonly uiMillHelper: UIMillHelper,
     private readonly uiPreparationHelper: UIPreparationHelper
   ) {}
-  private __triggerUpdate() {
-    // Fix, specialy on new devices which will see 2 update screens, the slider was white
-    setTimeout(() => {
-      //this.welcomeSlider.update();
-    });
-  }
+
   public ngOnInit() {
     try {
       this.settings = this.uiSettingsStorage.getSettings();
@@ -61,31 +50,28 @@ export class WelcomePopoverComponent implements OnInit {
     this.settings.matomo_analytics = false;
     this.uiAnalytics.disableTracking();
     await this.uiSettingsStorage.saveSettings(this.settings);
-    this.slide++;
-    //this.welcomeSlider.slideNext();
-    this.__triggerUpdate();
+    this.next();
   }
 
   public async understoodAnalytics() {
     this.settings.matomo_analytics = true;
     this.uiAnalytics.enableTracking();
     await this.uiSettingsStorage.saveSettings(this.settings);
-    this.slide++;
-
-    //this.welcomeSlider.slideNext();
-    this.__triggerUpdate();
+    this.next();
   }
 
   public async skip() {
     this.slide++;
-    //this.welcomeSlider.slideNext();
-    this.__triggerUpdate();
+    if (this.welcomeSlider?.nativeElement.swiper.allowSlideNext) {
+      this.welcomeSlider?.nativeElement.swiper.slideNext();
+    }
   }
 
   public next() {
     this.slide++;
-    //this.welcomeSlider.slideNext();
-    this.__triggerUpdate();
+    if (this.welcomeSlider?.nativeElement.swiper.allowSlideNext) {
+      this.welcomeSlider?.nativeElement.swiper.slideNext();
+    }
   }
 
   public async addBean() {

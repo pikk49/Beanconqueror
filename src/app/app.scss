@@ -609,18 +609,7 @@ ion-menu:host .menu-inner {
     transform: rotate(180deg);
   }
 
-  span.swiper-pagination-bullet.swiper-pagination-bullet-active {
-    width: 15px;
-    border-radius: 6px;
-  }
 
-  .swiper-pagination.swiper-pagination-bullets {
-    position: relative;
-  }
-  ion-slides {
-    --bullet-background: #282013;
-    --bullet-background-active: #AE9F87;
-  }
 
   @media (min-width: 768px) {
     ion-content {
@@ -884,4 +873,11 @@ ion-segment.tabs {
 
 .js-plotly-plot .plotly .main-svg {
   shape-rendering:  optimizeSpeed;
+}
+.swiper-pagination-bullet {
+  background-color: #282013;
+}
+.swiper-pagination-bullet.test {
+
+  background-color: #AE9F87;
 }

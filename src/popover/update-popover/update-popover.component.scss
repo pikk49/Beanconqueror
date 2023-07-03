@@ -12,8 +12,17 @@
     background:#ffffff;
     --background:#ffffff;
   }
-  .slider {
-    min-height: 100%;
-    background-color: #eee;
+  swiper-slide {
+    div {
+      margin-bottom:20px;
+    }
   }
+  .swiper-pagination-bullet {
+    background-color: #282013;
+  }
+  .swiper-pagination-bullet-active {
+
+    background-color: #AE9F87;
+  }
+
 }
