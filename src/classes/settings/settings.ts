@@ -121,13 +121,16 @@ export class Settings implements ISettings {
 
   public temperature_id: string;
   public temperature_type: TemperatureType;
-  public refractometer_id: string;
-  public refractometer_type: RefractometerType;
-  public refractometer_stay_connected: boolean;
   public temperature_log: boolean;
   public temperature_threshold_active: boolean;
   public temperature_threshold_temp: number;
   public temperature_stay_connected: boolean;
+
+  public refractometer_id: string;
+  public refractometer_type: RefractometerType;
+  public refractometer_stay_connected: boolean;
+  public refractometer_log: boolean;
+
   public currency: string;
   public brew_display_bean_image: boolean;
 
@@ -298,6 +301,18 @@ export class Settings implements ISettings {
     this.pressure_threshold_active = false;
     this.pressure_threshold_bar = 0.5;
     this.pressure_stay_connected = false;
+
+    this.temperature_id = '';
+    this.temperature_type = null;
+    this.temperature_log = false;
+    this.temperature_threshold_active = false;
+    this.temperature_threshold_temp = 92;
+    this.temperature_stay_connected = false;
+
+    this.refractometer_id = '';
+    this.refractometer_type = null;
+    this.refractometer_stay_connected = false;
+    this.refractometer_log = false;
 
     this.currency = 'EUR';
     this.brew_milliseconds_leading_digits = 3;

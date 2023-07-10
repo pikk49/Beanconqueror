@@ -616,8 +616,9 @@ export class AppComponent implements AfterViewInit {
         const pressure_id: string = checkDevices.pressure_id;
         const temperature_id: string = checkDevices.temperature_id;
         const scale_id: string = checkDevices.scale_id;
+        const refractometer_id: string = checkDevices.refractometer_id;
         //If one of these is there, enable bluetooth
-        if (pressure_id || temperature_id || scale_id) {
+        if (pressure_id || temperature_id || scale_id || refractometer_id) {
           await this.bleManager.enableIOSBluetooth();
         }
       } else {
@@ -639,7 +640,8 @@ export class AppComponent implements AfterViewInit {
     if (
       settings.scale_log === true ||
       settings.pressure_log === true ||
-      settings.temperature_log === true
+      settings.temperature_log === true ||
+      settings.refractometer_log === true
     ) {
       Logger.enableLog();
     } else {
@@ -661,6 +663,7 @@ export class AppComponent implements AfterViewInit {
     const searchIds: Array<any> = [];
 
     const scale_id: string = settings.scale_id;
+    const refractometer_id: string = settings.refractometer_id;
 
     let isAndroidAndPressureDevice: boolean = false;
     if (this.platform.is('android') && pressure_id) {
@@ -676,6 +679,9 @@ export class AppComponent implements AfterViewInit {
     }
     if (temperature_id && !this.platform.is('android')) {
       searchIds.push(temperature_id);
+    }
+    if (refractometer_id && !this.platform.is('android')) {
+      searchIds.push(refractometer_id);
     }
     try {
       if (searchIds.length > 0) {

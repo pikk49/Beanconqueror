@@ -75,6 +75,8 @@ import {
   RefractometerDevice,
 } from 'src/classes/devices/refractometerBluetoothDevice';
 import { delay } from 'lodash';
+import { UIToast } from '../../../services/uiToast';
+import { DiFluidR2Refractometer } from '../../../classes/devices/difluidR2Refractometer';
 
 declare var cordova;
 declare var Plotly;
@@ -167,8 +169,6 @@ export class BrewBrewingComponent implements OnInit, AfterViewInit {
 
   public preparationDevice: XeniaDevice = undefined;
 
-  public refractometerDevice: RefractometerDevice = undefined;
-
   private pressureThresholdWasHit: boolean = false;
   private temperatureThresholdWasHit: boolean = false;
 
@@ -195,7 +195,8 @@ export class BrewBrewingComponent implements OnInit, AfterViewInit {
     private readonly screenOrientation: ScreenOrientation,
     private readonly uiAlert: UIAlert,
     private readonly uiPreparationHelper: UIPreparationHelper,
-    private readonly ngZone: NgZone
+    private readonly ngZone: NgZone,
+    private readonly uiToast: UIToast
   ) {}
 
   public getActivePreparationTools() {
@@ -520,12 +521,6 @@ export class BrewBrewingComponent implements OnInit, AfterViewInit {
       this.bluetoothSubscription.unsubscribe();
       this.bluetoothSubscription = undefined;
     }
-
-    if (this.refractometerDeviceSubscription) {
-      this.refractometerDeviceSubscription.unsubscribe();
-      this.refractometerDeviceSubscription = undefined;
-    }
-
     this.deattachToWeightChange();
     this.deattachToFlowChange();
     this.deattachToPressureChange();
@@ -739,10 +734,13 @@ export class BrewBrewingComponent implements OnInit, AfterViewInit {
 
   public attachToRefractometerChanges() {
     if (this.refractometerConnected()) {
-      this.refractometerDevice = this.bleManager.getRefractometerDevice();
+      this.deattachToRefractometerChange();
+      const refractometerDevice = this.bleManager.getRefractometerDevice();
       this.refractometerDeviceSubscription =
-        this.refractometerDevice.resultEvent.subscribe(() => {
-          this.data.tds = this.refractometerDevice.getLastReading().tds;
+        refractometerDevice.resultEvent.subscribe(() => {
+          this.data.tds = refractometerDevice.getLastReading().tds;
+          this.uiAlert.hideLoadingSpinner();
+          this.uiToast.showInfoToastBottom('REFRACTOMETER.READ_END');
           this.checkChanges();
         });
     }
@@ -1820,7 +1818,31 @@ export class BrewBrewingComponent implements OnInit, AfterViewInit {
   }
 
   public async requestRefractometerRead() {
-    this.refractometerDevice.requestRead();
+    if (this.refractometerConnected()) {
+      let refractometerDevice = this.bleManager.getRefractometerDevice();
+      refractometerDevice = new DiFluidR2Refractometer(null);
+      refractometerDevice.requestRead();
+      this.uiAlert.showLoadingSpinner();
+
+      let refractometerSubscription;
+      const hideLoadingSpinnerTimeout = setTimeout(() => {
+        try {
+          if (this.uiAlert.isLoadingSpinnerShown()) {
+            this.uiAlert.hideLoadingSpinner();
+          }
+          refractometerSubscription.unsubscribe();
+        } catch (ex) {}
+      }, 5000);
+      refractometerSubscription = refractometerDevice.resultEvent.subscribe(
+        () => {
+          try {
+            //We got triggered, cancel set timeout
+            clearTimeout(hideLoadingSpinnerTimeout);
+            refractometerSubscription.unsubscribe();
+          } catch (ex) {}
+        }
+      );
+    }
   }
 
   public async calculateBrewBeverageQuantity() {
@@ -1998,9 +2020,6 @@ export class BrewBrewingComponent implements OnInit, AfterViewInit {
     if (this.refractometerConnected()) {
       this.deattachToRefractometerChange();
 
-      // if (_firstStart) {
-      this.refractometerDevice = this.bleManager.getRefractometerDevice();
-      // }
       this.attachToRefractometerChanges();
 
       this.checkChanges();

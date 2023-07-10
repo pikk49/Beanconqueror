@@ -1443,7 +1443,7 @@
       "SCRIPT_LIST_GENERAL_2": "Espresso, Endlos",
       "SCRIPT_LIST_GENERAL_STOP": "Bezug stoppen",
       "CHOOSE_SCRIPT_AT_WEIGHT": "Script auswählen für Gewichtserreichung",
-      "ERROR_NOT_ALL_SCRIPTS_FOUND":"Ein oder mehrere Xenia-Scripte konnten nicht mehr gefunden werden, diese wurden auf Standard zurückgesetzt",
+      "ERROR_NOT_ALL_SCRIPTS_FOUND": "Ein oder mehrere Xenia-Scripte konnten nicht mehr gefunden werden, diese wurden auf Standard zurückgesetzt",
       "ERROR_CONNECTION_COULD_NOT_BE_ESTABLISHED": "Die Verbindung zur Xenia-Siebträgermaschine konnte nicht hergestellt werden, bitte überprüfe ob du im richtigen Netz (WLAN) unterwegs bist, ob die Verbindung richtig hinterlegt wurde, oder ob andere Probleme vorhanden sind",
       "CHECKING_CONNECTION_TO_PORTAFILTER": "Verbindung zur Xenia wird überprüft",
       "GRABING_SCRIPTS": "Scripte werden von der Xenia geholt"
@@ -1456,8 +1456,8 @@
   "TEMPERATURE": {
     "CONNECTION_NOT_ESTABLISHED": "Temperaturgerät konnte nicht gefunden oder verbunden werden",
     "CONNECTED_SUCCESSFULLY": "Temperaturgerät verbunden",
-    "DISCONNECTED_SUCCESSFULLY":  "Temperaturgerät getrennt",
-    "DISCONNECTED_UNPLANNED":  "Temperaturgerät ungeplant getrennt",
+    "DISCONNECTED_SUCCESSFULLY": "Temperaturgerät getrennt",
+    "DISCONNECTED_UNPLANNED": "Temperaturgerät ungeplant getrennt",
     "STAY_CONNECTED_ON_APP_MINIMIZE": "Temperaturgerät verbunden lassen bei App minimierung/inaktivität",
     "INFORMATION_DESCRIPTION": "Unterstützte Temperaturgeräte sind: ETI Ltd Thermometers (ThermaQ Blue, BlueTherm, etc)",
     "BLUETOOTH_SCAN_RUNNING": "Temperaturgeräte werden für 60 Sekunden versucht zu finden, bitte warten",
@@ -1465,25 +1465,26 @@
     "REQUEST_PERMISSION": {
       "LOCATION": "Um Temperaturegeräte zu finden, muss der Standort freigegeben werden",
       "BLUETOOTH": "Um Temperaturegeräte zu finden, muss Bluetooth freigegeben werden"
-  }, 
-  "LOG": "Logfiles für Temperaturgeräte aktivieren",
-  "THRESHOLD_ACTIVE": "Zeit starten mit einer vordefinierten Temperatur",
-  "THRESHOLD_TEMP": "Schwellenwert Temperatur"
-},
-    "REFRACTOMETER": {
-      "CONNECTION_NOT_ESTABLISHED": "Refraktometer konnte nicht gefunden oder verbunden werden",
-      "CONNECTED_SUCCESSFULLY": "Refraktometer verbunden",
-      "DISCONNECTED_SUCCESSFULLY":  "Refraktometer getrennt",
-      "DISCONNECTED_UNPLANNED":  "Refraktometer ungeplant getrennt",
-      "STAY_CONNECTED_ON_APP_MINIMIZE": "Refraktometer verbunden lassen bei App minimierung/inaktivität",
-      "INFORMATION_DESCRIPTION": "Unterstützte Refraktometer sind: DiFluid R2",
-      "BLUETOOTH_SCAN_RUNNING": "Refraktometer werden für 60 Sekunden versucht zu finden, bitte warten",
-      "BLUETOOTH_NOT_ENABLED": "Bluetooth ist nicht aktiviert, bitte aktiviere dies in den Einstellungen",
-      "REQUEST_PERMISSION": {
-        "LOCATION": "Um Bluetooth Refraktometer zu finden, muss der Standort freigegeben werden",
-        "BLUETOOTH": "Um Bluetooth Refraktometer zu finden, muss Bluetooth freigegeben werden"
-      },
-    "LOG": "Logfiles für Refraktometer aktivieren"
+    },
+    "LOG": "Logfiles für Temperaturgeräte aktivieren",
+    "THRESHOLD_ACTIVE": "Zeit starten mit einer vordefinierten Temperatur",
+    "THRESHOLD_TEMP": "Schwellenwert Temperatur"
+  },
+  "REFRACTOMETER": {
+    "CONNECTION_NOT_ESTABLISHED": "Refraktometer konnte nicht gefunden oder verbunden werden",
+    "CONNECTED_SUCCESSFULLY": "Refraktometer verbunden",
+    "DISCONNECTED_SUCCESSFULLY": "Refraktometer getrennt",
+    "DISCONNECTED_UNPLANNED": "Refraktometer ungeplant getrennt",
+    "STAY_CONNECTED_ON_APP_MINIMIZE": "Refraktometer verbunden lassen bei App minimierung/inaktivität",
+    "INFORMATION_DESCRIPTION": "Unterstützte Refraktometer sind: DiFluid R2",
+    "BLUETOOTH_SCAN_RUNNING": "Refraktometer werden für 60 Sekunden versucht zu finden, bitte warten",
+    "BLUETOOTH_NOT_ENABLED": "Bluetooth ist nicht aktiviert, bitte aktiviere dies in den Einstellungen",
+    "REQUEST_PERMISSION": {
+      "LOCATION": "Um Bluetooth Refraktometer zu finden, muss der Standort freigegeben werden",
+      "BLUETOOTH": "Um Bluetooth Refraktometer zu finden, muss Bluetooth freigegeben werden"
+    },
+    "LOG": "Logfiles für Refraktometer aktivieren",
+    "READ_END": "Test wurde abgeschlossen, Wert wurde übertragen"
   },
   "POPOVER_BLUETOOTH_ACTION_RECONNECT_TEMPERATURE_DEVICE": "Temperaturgerät neu verbinden",
   "BREW_TEMPERATURE_REALTIME": "Temperatur",
@@ -1492,5 +1493,6 @@
   "PRESSURE_DEVICE_JUST_VISIBLE_ON_ESPRESSO": "Druckgerät ist nur Verwendbar bei Zubereitungsmethoden der Zubereitungsart 'Espresso'",
   "PRESSURE_MESSAGE_AFTER_CONNECTION": "Bekanntes Verhalten (in Analyse): Bitte beachte, dass der Verbindungsaufbau nach dem Neustart deines Telefons oder nach längerer Zeit, ohne, dass die App verwendet worden ist, auch länger dauern kann (30 Sekunden bis 1 Minute) danach sollte das Problem nicht mehr auftreten. ",
   "SMART_SCALE_ACAIA_HEARTBEAT_TIMER": "Heartbeat timer - Nur Acaia Waagen!",
-  "SMART_SCALE_ACAIA_HEARTBEAT_TIMER_TOOLTIP": "Wird nur für Acaia Waagen verwendet!!! Alte Acaia Wagen benötigen ein Heartbeat timer, falls du Probleme mit der Waage hast, versuch die Zeit zu minimieren "
+  "SMART_SCALE_ACAIA_HEARTBEAT_TIMER_TOOLTIP": "Wird nur für Acaia Waagen verwendet!!! Alte Acaia Wagen benötigen ein Heartbeat timer, falls du Probleme mit der Waage hast, versuch die Zeit zu minimieren ",
+  "POPOVER_BLUETOOTH_ACTION_RECONNECT_REFRACTOMETER": "Refactometer neu verbinden"
 }

@@ -526,7 +526,7 @@ export class SettingsPage implements OnInit {
       this.settings.refractometer_id !== '' &&
       this.bleManager.getRefractometerDevice()
     ) {
-      disconnected = await this.bleManager.disconnectTemperatureDevice(
+      disconnected = await this.bleManager.disconnectRefractometerDevice(
         this.settings.refractometer_id
       );
     }
@@ -735,7 +735,8 @@ export class SettingsPage implements OnInit {
     if (
       this.settings.scale_log === true ||
       this.settings.pressure_log === true ||
-      this.settings.temperature_log === true
+      this.settings.temperature_log === true ||
+      this.settings.refractometer_log === true
     ) {
       Logger.enableLog();
     } else {
