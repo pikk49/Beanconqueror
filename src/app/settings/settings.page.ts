@@ -684,6 +684,27 @@ export class SettingsPage implements OnInit {
     }
   }
 
+  public async checkPlannedBrewsSection() {
+    //if (this.settings.show_planned_brews_section === false) {
+    //  await this.uiAlert.showLoadingSpinner();
+    //  try {
+    //    this.settings.manage_parameters.water = true;
+    //    await this.saveSettings();
+    //
+    //    const preps: Array<Preparation> =
+    //      this.uiPreparationStorage.getAllEntries();
+    //    if (preps.length > 0) {
+    //      for (const prep of preps) {
+    //        prep.manage_parameters.water = true;
+    //        await this.uiPreparationStorage.update(prep);
+    //      }
+    //    }
+    //  } catch (ex) {}
+    //
+    //  await this.uiAlert.hideLoadingSpinner();
+    //}
+  }
+
   public checkHealthPlugin() {
     // #200 - Didn't save the settings
     if (this.settings.track_caffeine_consumption === false) {

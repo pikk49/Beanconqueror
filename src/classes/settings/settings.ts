@@ -98,6 +98,7 @@ export class Settings implements ISettings {
   public show_roasting_section: boolean;
   public show_water_section: boolean;
   public show_cupping_section: boolean;
+  public show_planned_brews_section: boolean;
 
   public scale_id: string;
   public scale_type: ScaleType;
@@ -232,6 +233,7 @@ export class Settings implements ISettings {
     this.show_roasting_section = false;
     this.show_water_section = false;
     this.show_cupping_section = false;
+    this.show_planned_brews_section = false;
 
     this.use_numeric_keyboard_for_grind_size = false;
 

@@ -282,7 +282,7 @@
               <div class='ion-label'>{{"PAGE_SETTINGS_SHOW_ROASTING_SECTION" | translate}}</div>
             </ion-checkbox>
           </ion-item>
-          <ion-item lines="none">
+          <ion-item>
             <ion-checkbox label-placement='start' (ngModelChange)="saveSettings();" (click)="checkWaterSection()"
               [(ngModel)]="settings.show_water_section">
               <div class='ion-label'>{{"PAGE_SETTINGS_SHOW_WATER_SECTION" | translate}}</div>
@@ -292,6 +292,11 @@
             <ion-checkbox label-placement='start' (ngModelChange)="saveSettings();" [(ngModel)]="settings.show_cupping_section">
               <div class='ion-label'>{{"PAGE_SETTINGS_SHOW_CUPPING_SECTION" | translate}}</div>
             </ion-checkbox>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-label>{{"PAGE_SETTINGS_SHOW_PLANNED_BREWS_SECTION" | translate}}</ion-label>
+            <ion-checkbox (ngModelChange)="saveSettings();" (click)="checkPlannedBrewsSection()"
+                          [(ngModel)]="settings.show_planned_brews_section"></ion-checkbox>
           </ion-item>
         </ion-card-content>
       </ion-card>
